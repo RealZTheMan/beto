@@ -1,0 +1,1124 @@
+/* ===================================================
+   DOĞUM GÜNÜ TEMASI - CSS STİLLERİ
+   Modern, Canlı, Glassmorphism ve Akıcı Animasyonlar
+   =================================================== */
+
+:root {
+    --bg-dark: #0a0915;
+    --bg-card: rgba(26, 23, 44, 0.7);
+    --border-color: rgba(255, 255, 255, 0.12);
+    --accent-pink: #ff2a85;
+    --accent-purple: #8b5cf6;
+    --accent-cyan: #06b6d4;
+    --accent-yellow: #f59e0b;
+    --accent-green: #10b981;
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --font-handwriting: 'Sacramento', cursive;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 24px;
+    --transition: all 0.25s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Arka Plan Işık Efektleri (Glow) */
+.background-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(140px);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.35;
+    animation: floatGlow 12s infinite alternate ease-in-out;
+}
+
+.glow-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--accent-pink), transparent);
+    top: -100px;
+    left: -150px;
+}
+
+.glow-2 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-purple), transparent);
+    bottom: 20%;
+    right: -200px;
+    animation-delay: -5s;
+}
+
+.glow-3 {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, var(--accent-cyan), transparent);
+    top: 50%;
+    left: 40%;
+    animation-delay: -8s;
+}
+
+@keyframes floatGlow {
+    0% { transform: translateY(0px) scale(1); }
+    100% { transform: translateY(60px) scale(1.15); }
+}
+
+/* Ses Açma/Kapama Sabit Butonu */
+.sound-control-wrapper {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 99;
+}
+
+.sound-toggle-btn {
+    background: rgba(30, 27, 75, 0.85);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px 16px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    transition: var(--transition);
+}
+
+.sound-toggle-btn:hover {
+    background: rgba(49, 46, 129, 0.95);
+    transform: translateY(-2px);
+    border-color: var(--accent-purple);
+}
+
+/* NAVBAR */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(16px);
+    background: rgba(10, 9, 21, 0.75);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+.nav-links .nav-highlight {
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+/* GENEL BUTONLAR */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-pink) 0%, var(--accent-purple) 100%);
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(255, 42, 133, 0.35);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 14px 30px rgba(255, 42, 133, 0.5);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.16);
+    transform: translateY(-2px);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #ff6b95, #e066ff, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* GENEL BÖLÜMLER */
+section {
+    padding: 90px 24px;
+    position: relative;
+}
+
+.section-container {
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-pink);
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.3rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 1. HERO BÖLÜMÜ */
+.hero-section {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.celebration-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-color);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    animation: bounceSlow 3s infinite ease-in-out;
+}
+
+@keyframes bounceSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 36px;
+    line-height: 1.7;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 16px 28px;
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    min-width: 140px;
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent-pink);
+}
+
+.stat-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* 2. İNTERAKTİF PASTA VE MUM */
+.cake-section {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.cake-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.cake-wrapper {
+    height: 240px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+}
+
+.cake {
+    position: relative;
+    width: 250px;
+    height: 160px;
+}
+
+.plate {
+    position: absolute;
+    bottom: -10px;
+    left: -25px;
+    width: 300px;
+    height: 20px;
+    background: #cbd5e1;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.layer {
+    position: absolute;
+    border-radius: 12px 12px 0 0;
+}
+
+.layer-bottom {
+    bottom: 0;
+    left: 25px;
+    width: 200px;
+    height: 70px;
+    background: #d97706;
+    border: 3px solid #b45309;
+}
+
+.layer-middle {
+    bottom: 60px;
+    left: 45px;
+    width: 160px;
+    height: 60px;
+    background: #f43f5e;
+    border: 3px solid #e11d48;
+}
+
+.layer-top {
+    bottom: 110px;
+    left: 65px;
+    width: 120px;
+    height: 50px;
+    background: #fff;
+    border: 3px solid #fbcfe8;
+    position: relative;
+}
+
+.strawberry {
+    position: absolute;
+    top: -15px;
+    font-size: 1.2rem;
+}
+
+.strawberry.s1 { left: 10px; }
+.strawberry.s2 { left: 46px; }
+.strawberry.s3 { left: 82px; }
+
+/* Mum */
+.candle {
+    position: absolute;
+    top: -45px;
+    left: 118px;
+    width: 14px;
+    height: 45px;
+    background: repeating-linear-gradient(45deg, #38bdf8, #38bdf8 6px, #fff 6px, #fff 12px);
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.candle-wick {
+    position: absolute;
+    top: -8px;
+    left: 5px;
+    width: 4px;
+    height: 8px;
+    background: #333;
+}
+
+.candle-flame {
+    position: absolute;
+    top: -24px;
+    left: 1px;
+    width: 12px;
+    height: 18px;
+    background: #f59e0b;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 15px #f59e0b, 0 0 25px #ef4444;
+    animation: flicker 1s infinite alternate ease-in-out;
+    transition: opacity 0.5s ease;
+}
+
+.candle-flame.blown-out {
+    opacity: 0;
+    transform: scale(0);
+}
+
+@keyframes flicker {
+    0% { transform: scale(1) rotate(-2deg); }
+    100% { transform: scale(1.15) rotate(3deg); }
+}
+
+.candle-smoke {
+    position: absolute;
+    top: -30px;
+    left: 3px;
+    width: 8px;
+    height: 20px;
+    background: rgba(200, 200, 200, 0.6);
+    border-radius: 50%;
+    filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.candle-smoke.active {
+    animation: puffSmoke 1.5s ease-out forwards;
+}
+
+@keyframes puffSmoke {
+    0% { opacity: 0.8; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-40px) scale(2.5); }
+}
+
+.btn-blow {
+    background: #1e1b4b;
+    border: 2px solid var(--accent-pink);
+    color: #fff;
+}
+
+.btn-blow:hover {
+    background: var(--accent-pink);
+    transform: translateY(-2px);
+}
+
+.wish-message {
+    margin-top: 14px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #34d399;
+    min-height: 28px;
+    text-align: center;
+}
+
+/* 3. HATIRALAR (TIMELINE) */
+.timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.memory-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    backdrop-filter: blur(12px);
+    transition: var(--transition);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.memory-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 42, 133, 0.4);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+}
+
+.memory-icon-box {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.memory-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.memory-tag {
+    color: var(--accent-pink);
+    text-transform: uppercase;
+}
+
+.memory-date {
+    color: var(--text-muted);
+}
+
+.memory-card h3 {
+    font-size: 1.3rem;
+    font-family: var(--font-heading);
+    margin-bottom: 12px;
+}
+
+.memory-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.photo-placeholder {
+    background: rgba(0, 0, 0, 0.25);
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
+    padding: 20px 14px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.photo-placeholder .photo-icon {
+    font-size: 1.8rem;
+}
+
+/* 4. NEDEN HARİKASIN? (TRAITS) */
+.traits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.trait-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    backdrop-filter: blur(12px);
+    transition: var(--transition);
+}
+
+.trait-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-purple);
+    background: rgba(40, 36, 70, 0.7);
+}
+
+.trait-emoji {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+}
+
+.trait-card h3 {
+    font-size: 1.3rem;
+    font-family: var(--font-heading);
+    margin-bottom: 10px;
+}
+
+.trait-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* 5. DOĞUM GÜNÜ YILAN OYUNU */
+.game-section {
+    background: rgba(13, 10, 30, 0.85);
+}
+
+.arcade-card {
+    max-width: 520px;
+    margin: 0 auto;
+    background: #131127;
+    border: 2px solid rgba(139, 92, 246, 0.4);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(139, 92, 246, 0.15);
+}
+
+.arcade-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.score-box, .goal-box, .high-score-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 10px 16px;
+    text-align: center;
+    flex: 1;
+}
+
+.goal-box {
+    border-color: rgba(255, 42, 133, 0.4);
+    background: rgba(255, 42, 133, 0.08);
+}
+
+.score-label, .goal-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+.goal-label {
+    color: var(--accent-pink);
+}
+
+.score-value, .goal-value {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.goal-value {
+    color: #fb7185;
+}
+
+.canvas-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    max-width: 400px;
+    margin: 0 auto;
+    background: #090814;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+#snakeCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.game-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(9, 8, 20, 0.88);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+.game-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.overlay-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+.overlay-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+.overlay-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.btn-game {
+    font-size: 1rem;
+    padding: 12px 28px;
+}
+
+/* Yön Tuşları */
+.arcade-controls {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.keyboard-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.keyboard-hint strong {
+    color: var(--accent-cyan);
+}
+
+.d-pad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.d-row {
+    display: flex;
+    gap: 10px;
+}
+
+.d-btn {
+    width: 52px;
+    height: 52px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1.3rem;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    user-select: none;
+}
+
+.d-btn:active {
+    background: var(--accent-purple);
+    transform: scale(0.92);
+}
+
+/* 6. MEKTUP BÖLÜMÜ */
+.letter-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.letter-card {
+    max-width: 720px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(35, 30, 60, 0.9), rgba(20, 17, 36, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-lg);
+    padding: 44px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.letter-stamp {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    background: rgba(255, 42, 133, 0.2);
+    border: 1px dashed var(--accent-pink);
+    color: var(--accent-pink);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.letter-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+    color: #ff94b8;
+}
+
+.letter-body {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #e2e8f0;
+}
+
+.letter-body p {
+    margin-bottom: 16px;
+}
+
+.letter-closing {
+    margin-top: 28px;
+    font-size: 1.1rem;
+}
+
+/* 7. DİLEK VE NOT PANOSU (GUESTBOOK) */
+.guestbook-controls {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.sticky-note {
+    padding: 22px;
+    border-radius: 8px;
+    color: #1e293b;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 160px;
+    transition: transform 0.25s ease;
+    transform: rotate(-1.5deg);
+}
+
+.sticky-note:nth-child(even) {
+    transform: rotate(1.5deg);
+}
+
+.sticky-note:hover {
+    transform: scale(1.04) rotate(0deg);
+    z-index: 5;
+}
+
+.note-yellow { background: #fef08a; }
+.note-pink   { background: #fbcfe8; }
+.note-blue   { background: #bae6fd; }
+.note-green  { background: #bbf7d0; }
+
+.note-text {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.note-author {
+    font-size: 0.85rem;
+    font-weight: 700;
+    align-self: flex-end;
+    color: #475569;
+}
+
+/* MODAL PENCERELERİ */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 5, 12, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-card {
+    background: #17142b;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-backdrop.active .modal-card {
+    transform: translateY(0) scale(1);
+}
+
+.win-modal-card {
+    text-align: center;
+    border-color: rgba(255, 42, 133, 0.5);
+    box-shadow: 0 0 50px rgba(255, 42, 133, 0.25);
+}
+
+.trophy-badge {
+    font-size: 3.5rem;
+    margin-bottom: 12px;
+    animation: bounceSlow 2s infinite ease-in-out;
+}
+
+.modal-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.win-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-yellow));
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+    padding: 6px 18px;
+    border-radius: 30px;
+    margin-bottom: 16px;
+}
+
+.modal-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.modal-message {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-size: 1.05rem;
+}
+
+.reward-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px dashed rgba(255, 42, 133, 0.5);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    text-align: left;
+}
+
+.reward-icon {
+    font-size: 2.4rem;
+}
+
+.reward-title {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    color: #ff94b8;
+}
+
+.reward-desc {
+    font-size: 0.95rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.reward-hint {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* FORM ELEMANLARI */
+.form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-pink);
+    box-shadow: 0 0 0 3px rgba(255, 42, 133, 0.2);
+}
+
+.color-picker-group {
+    display: flex;
+    gap: 14px;
+}
+
+.color-option {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.color-option input {
+    display: none;
+}
+
+.c-preview {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: transform 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.color-option input:checked + .c-preview {
+    transform: scale(1.25);
+    border-color: #fff;
+}
+
+/* FOOTER */
+.footer {
+    border-top: 1px solid var(--border-color);
+    padding: 40px 24px;
+    text-align: center;
+    background: rgba(10, 9, 21, 0.9);
+}
+
+.footer-container p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+
+.footer-sub {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* RESPONSIVE DÜZENLEME */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .nav-links {
+        display: none; /* Mobilde temiz görünüm */
+    }
+    .letter-card {
+        padding: 28px 20px;
+    }
+}

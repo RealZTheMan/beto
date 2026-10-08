@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İyi ki Doğdun Betö! 🎂✨</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Arka Plan Işık Efektleri -->
+    <div class="background-glow glow-1"></div>
+    <div class="background-glow glow-2"></div>
+    <div class="background-glow glow-3"></div>
+
+    <!-- Müzik / Ses Efekti Aç-Kapa Butonu -->
+    <div class="sound-control-wrapper">
+        <button id="soundToggleBtn" class="sound-toggle-btn" title="Ses Efektlerini Aç/Kapat">
+            <span id="soundIcon">🔊</span>
+            <span class="sound-label">Ses Efektleri</span>
+        </button>
+    </div>
+
+    <!-- Üst Gezinme / Logo Çubuğu -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">🎂 Betö'nün Günü</a>
+            <nav class="nav-links">
+                <a href="#timeline">Hatıralar</a>
+                <a href="#traits">Neden Harikasın?</a>
+                <a href="#cake-section">Dilek Tut</a>
+                <a href="#game-section" class="nav-highlight">Mini Oyun 🎮</a>
+                <a href="#guestbook">Mesajlar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. HERO BÖLÜMÜ -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <div class="celebration-badge">
+                    <span class="sparkle">✨</span> Bugün Senin Günün! <span class="sparkle">✨</span>
+                </div>
+                <h1 class="hero-title">
+                    İyi ki Doğdun, <span class="gradient-text">Betö!</span> 🎉
+                </h1>
+                <p class="hero-subtitle">
+                    Hayatımıza neşe, kahkaha ve güzellik katan en özel insana... Yeni yaşın sana tüm hayallerini, mutlulukları ve başarıları getirsin!
+                </p>
+                <div class="hero-actions">
+                    <button id="confettiBtn" class="btn btn-primary">
+                        <span>Kutlamayı Patlat! 🎊</span>
+                    </button>
+                    <a href="#game-section" class="btn btn-secondary">
+                        <span>Hediyeyi Kazan (Mini Oyun) 🎁</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">365+</span>
+                        <span class="stat-desc">Günlük Neşe</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-desc">Güzel Hatıra</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-desc">Sevgi & Dostluk</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. İNTERAKTİF PASTA VE MUM ÜFLEME BÖLÜMÜ -->
+        <section id="cake-section" class="cake-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Geleneksel An</span>
+                    <h2 class="section-title">Bir Dilek Tut ve Mumu Üfle! 🕯️</h2>
+                    <p class="section-subtitle">Gözlerini kapat, kalbinden geçen en güzel dileği tut ve aşağıdaki butona bas.</p>
+                </div>
+
+                <div class="cake-container">
+                    <div class="cake-wrapper">
+                        <!-- Pasta Çizimi -->
+                        <div class="cake">
+                            <div class="plate"></div>
+                            <div class="layer layer-bottom"></div>
+                            <div class="layer layer-middle"></div>
+                            <div class="layer layer-top">
+                                <div class="icing"></div>
+                                <div class="strawberry s1">🍓</div>
+                                <div class="strawberry s2">🍓</div>
+                                <div class="strawberry s3">🍓</div>
+                            </div>
+                            <!-- Mum ve Alev -->
+                            <div class="candle">
+                                <div class="candle-wick"></div>
+                                <div id="candleFlame" class="candle-flame"></div>
+                                <div id="candleSmoke" class="candle-smoke"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cake-controls">
+                        <button id="blowCandleBtn" class="btn btn-blow">
+                            <span class="blow-icon">💨</span>
+                            <span id="blowBtnText">Mumu Üfle!</span>
+                        </button>
+                        <p id="wishStatus" class="wish-message"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. HATIRALAR & ZAMAN TÜNELİ BÖLÜMÜ -->
+        <section id="timeline" class="timeline-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Zaman Tüneli</span>
+                    <h2 class="section-title">Birlikte Biriktirdiğimiz Anlar 📸</h2>
+                    <p class="section-subtitle">Gülüşmeler, maceralar ve asla unutulmayacak anılar...</p>
+                </div>
+
+                <div class="timeline-grid">
+                    <!-- Hatıra Kartı 1 -->
+                    <div class="memory-card">
+                        <div class="memory-icon-box">🌟</div>
+                        <div class="memory-meta">
+                            <span class="memory-tag">Bölüm 1</span>
+                            <span class="memory-date">Başlangıç</span>
+                        </div>
+                        <h3>İlk Tanıştığımız Gün</h3>
+                        <p>Zamanın nasıl geçtiğini anlamadığımız o ilk sohbet ve hayat boyu sürecek sağlam bir dostluğun ilk tohumları!</p>
+                        <div class="photo-placeholder">
+                            <span class="photo-icon">🖼️</span>
+                            <span>Fotoğraf eklemek için burayı düzenleyebilirsin</span>
+                        </div>
+                    </div>
+
+                    <!-- Hatıra Kartı 2 -->
+                    <div class="memory-card">
+                        <div class="memory-icon-box">☕</div>
+                        <div class="memory-meta">
+                            <span class="memory-tag">Bölüm 2</span>
+                            <span class="memory-date">Unutulmaz Akşamlar</span>
+                        </div>
+                        <h3>Saatlerce Süren Muhabbetler</h3>
+                        <p>Kahveler eşliğinde dertleştiğimiz, dünyayı kurtardığımız ve kahkahalara boğulduğumuz o meşhur geceler.</p>
+                        <div class="photo-placeholder">
+                            <span class="photo-icon">📷</span>
+                            <span>Özel bir fotoğraf veya anı notu</span>
+                        </div>
+                    </div>
+
+                    <!-- Hatıra Kartı 3 -->
+                    <div class="memory-card">
+                        <div class="memory-icon-box">🚗</div>
+                        <div class="memory-meta">
+                            <span class="memory-tag">Bölüm 3</span>
+                            <span class="memory-date">Yol Hikayesi</span>
+                        </div>
+                        <h3>En Eğlenceli Yolculuk</h3>
+                        <p>Müzik sesini sonuna kadar açıp şarkılara eşlik ettiğimiz, kaybolsak bile eğlenmeyi bildiğimiz o yolculuk.</p>
+                        <div class="photo-placeholder">
+                            <span class="photo-icon">🗺️</span>
+                            <span>Birlikte çekildiğiniz bir fotoğraf</span>
+                        </div>
+                    </div>
+
+                    <!-- Hatıra Kartı 4 -->
+                    <div class="memory-card">
+                        <div class="memory-icon-box">🚀</div>
+                        <div class="memory-meta">
+                            <span class="memory-tag">Bölüm 4</span>
+                            <span class="memory-date">Gelecek</span>
+                        </div>
+                        <h3>Ve Önümüzde Bizi Bekleyen Yeni Sayfalar</h3>
+                        <p>Daha keşfedilecek çok yer, söylenecek çok şarkı ve kahkahalarla anılacak yepyeni yaşlar var!</p>
+                        <div class="photo-placeholder">
+                            <span class="photo-icon">✨</span>
+                            <span>Gelecek güzel anılar için yer ayrıldı</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. NEDEN HARİKASIN? (ÖZELLİKLER) -->
+        <section id="traits" class="traits-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Senin Hakkında</span>
+                    <h2 class="section-title">Seni Özel Kılan Şeyler 💖</h2>
+                    <p class="section-subtitle">Sadece birkaç kelimeyle özetlemek zor olsa da, işte en sevdiklerimiz:</p>
+                </div>
+
+                <div class="traits-grid">
+                    <div class="trait-card">
+                        <div class="trait-emoji">⚡</div>
+                        <h3>Bitmeyen Enerji</h3>
+                        <p>Odaya girdiğin anda ortamın havasını değiştiren o doğal ve neşeli enerjin paha biçilemez.</p>
+                    </div>
+
+                    <div class="trait-card">
+                        <div class="trait-emoji">🤝</div>
+                        <h3>Sonsuz Güvenilirlik</h3>
+                        <p>Günün hangi saati olursa olsun, yardıma ihtiyaç duyulduğunda her zaman orada olan koca bir kalp.</p>
+                    </div>
+
+                    <div class="trait-card">
+                        <div class="trait-emoji">😂</div>
+                        <h3>En İyi Mizah Anlayışı</h3>
+                        <p>En stresli anlarda bile tek bir cümleyle herkesi güldürme yeteneği sende doğuştan var!</p>
+                    </div>
+
+                    <div class="trait-card">
+                        <div class="trait-emoji">🎯</div>
+                        <h3>Hedeflerine Olan Tutkun</h3>
+                        <p>Kafana koyduğun şeyi başarmak için gösterdiğin azim ve çalışma şevki herkese ilham veriyor.</p>
+                    </div>
+
+                    <div class="trait-card">
+                        <div class="trait-emoji">👂</div>
+                        <h3>Harika Bir Dinleyici</h3>
+                        <p>Sadece dinlemekle kalmayıp gerçekten anlayan, yargılamadan yanımızda duran bir dostsun.</p>
+                    </div>
+
+                    <div class="trait-card">
+                        <div class="trait-emoji">🌈</div>
+                        <h3>Orijinal ve Kendin Olman</h3>
+                        <p>Kimseye benzemeyen tarzın, kendine has düşüncelerin ve samimiyetin en büyük güzelliğin.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. DOĞUM GÜNÜ YILAN OYUNU (SNAKE GAME) -->
+        <section id="game-section" class="game-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Özel Görev</span>
+                    <h2 class="section-title">Doğum Günü Yılanı 🐍🎂</h2>
+                    <p class="section-subtitle">
+                        Pastaları topla ve <strong>10 puana</strong> ulaşarak doğum günü hediyeni aç!
+                    </p>
+                </div>
+
+                <div class="arcade-card">
+                    <!-- Skor Tablosu -->
+                    <div class="arcade-header">
+                        <div class="score-box">
+                            <span class="score-label">SKOR</span>
+                            <span id="currentScore" class="score-value">0</span>
+                        </div>
+                        <div class="goal-box">
+                            <span class="goal-label">HEDEF</span>
+                            <span class="goal-value">10 Puan</span>
+                        </div>
+                        <div class="high-score-box">
+                            <span class="score-label">EN YÜKSEK</span>
+                            <span id="highScore" class="score-value">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Canvas Alanı -->
+                    <div class="canvas-wrapper">
+                        <canvas id="snakeCanvas" width="400" height="400"></canvas>
+                        
+                        <!-- Başlangıç / Durdurma Ekranı -->
+                        <div id="gameOverlay" class="game-overlay">
+                            <div class="overlay-content">
+                                <div class="overlay-icon">🎮</div>
+                                <h3 id="overlayTitle">Hazır Mısın?</h3>
+                                <p id="overlayMessage">Pastaları (🎂) topla. 10 puana ulaşınca ödülü kap!</p>
+                                <button id="startGameBtn" class="btn btn-primary btn-game">Oyunu Başlat</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kontrol Tuşları (Mobil & Dokunmatik İçin) -->
+                    <div class="arcade-controls">
+                        <div class="keyboard-hint">
+                            <span>Klavye: <strong>W, A, S, D</strong> veya <strong>Yön Tuşları</strong></span>
+                        </div>
+                        <div class="d-pad">
+                            <button class="d-btn up" data-dir="UP" aria-label="Yukarı">⬆️</button>
+                            <div class="d-row">
+                                <button class="d-btn left" data-dir="LEFT" aria-label="Sol">⬅️</button>
+                                <button class="d-btn down" data-dir="DOWN" aria-label="Aşağı">⬇️</button>
+                                <button class="d-btn right" data-dir="RIGHT" aria-label="Sağ">➡️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. ÖZEL DOĞUM GÜNÜ MEKTUBU / MESAJI -->
+        <section class="letter-section">
+            <div class="section-container">
+                <div class="letter-card">
+                    <div class="letter-stamp">💌 2026</div>
+                    <h2 class="letter-title">Sana Küçük Bir Not...</h2>
+                    <div class="letter-body">
+                        <p>Sevgili Betö,</p>
+                        <p>
+                            Hayat bazen koşturmacalı, bazen sürprizlerle dolu ama senin gibi samimi, neşeli ve vefalı bir dostla her gün çok daha güzel. 
+                            Gülüşünün hiç solmadığı, sağlığın, neşen ve sevdiklerinin her daim yanında olduğu muhteşem bir yaş dilerim.
+                        </p>
+                        <p>
+                            Yeni yaşında tüm hayallerine bir adım daha yaklaşmanı, kalbinden geçen her güzel şeyin gerçeğe dönüşmesini canıgönülden temenni ediyorum.
+                        </p>
+                        <p class="letter-closing">
+                            İyi ki varsın, iyi ki doğdun!<br>
+                            <strong>En içten sevgilerimle ❤️</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. İNTERAKTİF DİLEK VE NOT PANOSU (GUESTBOOK) -->
+        <section id="guestbook" class="guestbook-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Dilek Duvarı</span>
+                    <h2 class="section-title">Doğum Günü Notları 📌</h2>
+                    <p class="section-subtitle">Arkadaşlarının ve sevdiklerinin bıraktığı renkli tebrik kartları!</p>
+                </div>
+
+                <div class="guestbook-controls">
+                    <button id="openNoteModalBtn" class="btn btn-secondary">
+                        <span>+ Yeni Not Bırak</span>
+                    </button>
+                </div>
+
+                <div id="notesGrid" class="notes-grid">
+                    <!-- Varsayılan Örnek Notlar -->
+                    <div class="sticky-note note-yellow">
+                        <p class="note-text">"Yeni yaşın sana sağlık, sonsuz huzur ve bolca şans getirsin. Nice güzel yıllara!"</p>
+                        <span class="note-author">— Ayşe</span>
+                    </div>
+                    <div class="sticky-note note-pink">
+                        <p class="note-text">"İyi ki doğdun dostum! Bu sene hep beraber yapacağımız tatili sabırsızlıkla bekliyorum! 🎉"</p>
+                        <span class="note-author">— Mehmet</span>
+                    </div>
+                    <div class="sticky-note note-blue">
+                        <p class="note-text">"Dünyanın en tatlı insanı, doğum günün kutlu olsun. Hayat boyu böyle gülümse!"</p>
+                        <span class="note-author">— Zeynep</span>
+                    </div>
+                    <div class="sticky-note note-green">
+                        <p class="note-text">"Yeni yaş yeni maceralar demek! Birlikte nice efsane anılar biriktirmeye devam! 🚀"</p>
+                        <span class="note-author">— Caner</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- KAZANDIN! ÖDÜL MODALI (SNAKE OYUNU BİTİNCE AÇILIR) -->
+    <div id="winModal" class="modal-backdrop">
+        <div class="modal-card win-modal-card">
+            <div class="modal-sparkle-bg"></div>
+            <div class="trophy-badge">🏆</div>
+            <h2 class="modal-title">TEBRİKLER! KAZANDIN! 🎉</h2>
+            <div class="win-tag">YOU WON!</div>
+            <p class="modal-message">
+                10 puana ulaştın ve oyunu başarıyla tamamladın! İşte senin için hazırlanan özel doğum günü hediyesi:
+            </p>
+            <div class="reward-box">
+                <div class="reward-icon">🎁</div>
+                <div class="reward-details">
+                    <h4 class="reward-title">Doğum Günü Ödülün</h4>
+                    <p class="reward-desc">
+                        "İstediğin bir kahve & tatlı benden! İstediğin zaman bu kuponu bozdurabilirsin ☕🍰"
+                    </p>
+                    <small class="reward-hint">(Bu metni script.js veya index.html içinden istediğin hediyeyle değiştirebilirsin!)</small>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="claimRewardBtn" class="btn btn-primary">Ödülü Kabul Et! 🥳</button>
+                <button id="playAgainBtn" class="btn btn-secondary">Tekrar Oyna 🔄</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- YENİ NOT EKLEME MODALI -->
+    <div id="noteModal" class="modal-backdrop">
+        <div class="modal-card">
+            <h3 class="modal-title">Panoya Yeni Not Bırak ✨</h3>
+            <p class="modal-subtitle">Doğum günü sahibine kısa ve tatlı bir mesaj yaz:</p>
+            <form id="noteForm">
+                <div class="form-group">
+                    <label for="noteAuthor">İsmin:</label>
+                    <input type="text" id="noteAuthor" placeholder="Örn: Burak" required maxlength="30">
+                </div>
+                <div class="form-group">
+                    <label for="noteMessage">Dileğin / Mesajın:</label>
+                    <textarea id="noteMessage" rows="3" placeholder="Doğum günün kutlu olsun..." required maxlength="160"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Kart Rengi:</label>
+                    <div class="color-picker-group">
+                        <label class="color-option"><input type="radio" name="noteColor" value="yellow" checked><span class="c-preview yellow"></span></label>
+                        <label class="color-option"><input type="radio" name="noteColor" value="pink"><span class="c-preview pink"></span></label>
+                        <label class="color-option"><input type="radio" name="noteColor" value="blue"><span class="c-preview blue"></span></label>
+                        <label class="color-option"><input type="radio" name="noteColor" value="green"><span class="c-preview green"></span></label>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-primary">Notu Ekle</button>
+                    <button type="button" id="closeNoteModalBtn" class="btn btn-secondary">İptal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ALT BİLGİ (FOOTER) -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>🎂 Betö'nün Doğum Günü Kutlaması İçin Sevgiyle Hazırlandı ❤️</p>
+            <p class="footer-sub">Tüm hakları saklıdır &copy; 2026 | İyi ki Doğdun!</p>
+        </div>
+    </footer>
+
+    <!-- Konfeti Efekti ve Mantık Scripti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
