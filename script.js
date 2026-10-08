@@ -457,10 +457,7 @@ bmoFace.addEventListener('click', () => {
 
 // Yön Kontrol Fonksiyonu
 function changeDirection(dir) {
-    if (!isPlaying) {
-        startBmoGame();
-        return;
-    }
+    if (!isPlaying) return;
     switch (dir) {
         case 'UP':
             if (dy !== 1) { nextDx = 0; nextDy = -1; }
@@ -479,27 +476,50 @@ function changeDirection(dir) {
 
 // Klavye Kontrolleri (WASD & Ok Tuşları)
 window.addEventListener('keydown', (e) => {
+    // 1. Kullanıcı yazı yazıyorsa (input, textarea vb.) klavye kontrollerini tamamen yoksay
+    const activeEl = document.activeElement;
+    const target = e.target;
+    if (
+        (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) ||
+        (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.isContentEditable))
+    ) {
+        return;
+    }
+
+    // 2. Not ekleme penceresi açıksa veya oyun aktif değilse yılan hareketlerini tetikleme
+    if (noteModal && noteModal.classList.contains('active')) {
+        return;
+    }
+
+    if (!isPlaying) {
+        return;
+    }
+
     const key = e.key.toLowerCase();
     if (['arrowup', 'w'].includes(key)) {
         changeDirection('UP');
-        if (isPlaying) e.preventDefault();
+        e.preventDefault();
     } else if (['arrowdown', 's'].includes(key)) {
         changeDirection('DOWN');
-        if (isPlaying) e.preventDefault();
+        e.preventDefault();
     } else if (['arrowleft', 'a'].includes(key)) {
         changeDirection('LEFT');
-        if (isPlaying) e.preventDefault();
+        e.preventDefault();
     } else if (['arrowright', 'd'].includes(key)) {
         changeDirection('RIGHT');
-        if (isPlaying) e.preventDefault();
+        e.preventDefault();
     }
 });
 
 // BMO Üzerindeki Sarı Artı D-PAD Tuşları İle Oynama
 bmoDpadBtns.forEach(btn => {
-    // Hem click hem pointerdown desteği (mobil dokunmatik tepki süresi için mükemmel)
+    // Hem click hem pointerdown desteği
     btn.addEventListener('pointerdown', (e) => {
         e.preventDefault();
+        if (!isPlaying) {
+            bmoMouth.innerHTML = MOUTH_SMILE;
+            startBmoGame();
+        }
         const dir = btn.getAttribute('data-dir');
         changeDirection(dir);
     });
