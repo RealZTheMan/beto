@@ -11,13 +11,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Arka Plan Işık Efektleri -->
+    <!-- Arka Plan Işık Efektleri & Lavanta/Dostlar Katmanı -->
     <div class="background-glow glow-1"></div>
     <div class="background-glow glow-2"></div>
     <div class="background-glow glow-3"></div>
+    <div id="lavenderBreezeContainer" class="lavender-breeze-container"></div>
+    <div id="critterSkyContainer" class="critter-sky-container"></div>
 
-    <!-- Müzik / Ses Efekti Aç-Kapa Butonu -->
+    <!-- Sabit Alt Kontrol Çubuğu (Ses & Sevimli Dostları Çağır) -->
     <div class="sound-control-wrapper">
+        <button id="summonCrittersBtn" class="sound-toggle-btn critter-btn" title="Baykuş, Kedi ve Lavantaları Uçur!">
+            <span>🦉🐱🪻</span>
+            <span class="critter-label">Dostları Çağır</span>
+        </button>
         <button id="soundToggleBtn" class="sound-toggle-btn" title="Ses Efektlerini Aç/Kapat">
             <span id="soundIcon">🔊</span>
             <span class="sound-label">Ses Efektleri</span>

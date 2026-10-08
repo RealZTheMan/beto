@@ -100,6 +100,40 @@ class SoundEffects {
             }, idx * 70);
         });
     }
+
+    // Baykuş Ötüşü (Hoo-hoo!)
+    hoot() {
+        if (!this.enabled) return;
+        this.playTone(392.00, 'sine', 0.2, 0.15); // G4
+        setTimeout(() => this.playTone(329.63, 'sine', 0.35, 0.18), 160); // E4
+    }
+
+    // Kedi Miyavlaması (Meow!)
+    meow() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        try {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            const now = this.ctx.currentTime;
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(450, now);
+            osc.frequency.exponentialRampToValueAtTime(780, now + 0.18);
+            osc.frequency.exponentialRampToValueAtTime(420, now + 0.38);
+
+            gain.gain.setValueAtTime(0.01, now);
+            gain.gain.linearRampToValueAtTime(0.18, now + 0.12);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.4);
+        } catch (e) {
+            this.playTone(600, 'triangle', 0.25, 0.15);
+        }
+    }
 }
 
 const sfx = new SoundEffects();
@@ -588,9 +622,192 @@ noteForm.addEventListener('submit', (e) => {
     noteModal.classList.remove('active');
 });
 
+// --- LAVANTA ESİNTİSİ & UÇAN BAYKUŞ VE KEDİ YÖNETİCİSİ ---
+const lavenderContainer = document.getElementById('lavenderBreezeContainer');
+const critterSkyContainer = document.getElementById('critterSkyContainer');
+const summonCrittersBtn = document.getElementById('summonCrittersBtn');
+
+function spawnLavenderPetal() {
+    if (!lavenderContainer) return;
+    const petal = document.createElement('div');
+    petal.className = 'lavender-petal';
+    
+    // Rastgele lavanta ikonu veya ışıltı
+    const icons = ['🪻', '🌸', '✨', '🪻', '💜', '🪻'];
+    petal.textContent = icons[Math.floor(Math.random() * icons.length)];
+    
+    const startX = Math.random() * (window.innerWidth - 40);
+    const size = 1 + Math.random() * 0.7; // rem
+    const duration = 12 + Math.random() * 6; // sn
+    
+    petal.style.left = `${startX}px`;
+    petal.style.fontSize = `${size}rem`;
+    petal.style.animationDuration = `${duration}s`;
+    
+    petal.addEventListener('click', (e) => {
+        burstHearts(e.clientX, e.clientY);
+        sfx.playTone(850, 'sine', 0.12, 0.1);
+        petal.remove();
+    });
+    
+    lavenderContainer.appendChild(petal);
+    
+    setTimeout(() => {
+        if (petal.parentNode) petal.remove();
+    }, duration * 1000);
+}
+
+// Tıklanınca Kalp ve Işıltı Saçma Fonksiyonu
+function burstHearts(x, y) {
+    const emojis = ['💜', '💖', '🪻', '✨', '🐾', '💕', '🐱', '🦉'];
+    for (let i = 0; i < 7; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        heart.style.left = `${x}px`;
+        heart.style.top = `${y}px`;
+        
+        const tx = (Math.random() - 0.5) * 140;
+        const ty = -50 - Math.random() * 80;
+        heart.style.setProperty('--tx', `${tx}px`);
+        heart.style.setProperty('--ty', `${ty}px`);
+        
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1200);
+    }
+}
+
+// Uçan Baykuş veya Kedi Oluşturma
+function spawnFlyingCritter(forcedType = null) {
+    if (!critterSkyContainer) return;
+    
+    const isOwl = forcedType ? forcedType === 'owl' : Math.random() > 0.5;
+    const critter = document.createElement('div');
+    critter.className = 'flying-critter';
+    
+    // Uçuş Yüksekliği ve Yönü
+    const startFromLeft = Math.random() > 0.35;
+    const startX = startFromLeft ? -260 : window.innerWidth + 20;
+    const endX = startFromLeft ? window.innerWidth + 260 : -260;
+    const startY = 80 + Math.random() * (window.innerHeight - 260);
+    
+    let icon = '';
+    let message = '';
+    
+    if (isOwl) {
+        icon = '🦉';
+        const owlMessages = [
+            'Hoo! İyi ki Doğdun Betö! 🪻',
+            'Bilge baykuş sana harika bir yaş diler! ✨',
+            'Uçuşa geç! Bu yıl senin başarınla parlayacak! 🦉💜',
+            'Seni çok seviyoruz Betö! 🪻'
+        ];
+        message = owlMessages[Math.floor(Math.random() * owlMessages.length)];
+    } else {
+        icon = '🐱🎈';
+        const catMessages = [
+            'Miyav! Doğum günün kutlu olsun Betö! 💜',
+            'Pati dostun sana sıcacık sevgiler yollar! 🐾',
+            'Bol kahkahalı, lavanta kokulu harika bir yaş! 🪻',
+            'Mırrr... İyi ki varsın Betö! ✨'
+        ];
+        message = catMessages[Math.floor(Math.random() * catMessages.length)];
+    }
+    
+    critter.innerHTML = `
+        <span class="critter-icon">${icon}</span>
+        <span class="critter-tag">${message}</span>
+    `;
+    
+    critter.style.top = `${startY}px`;
+    critter.style.left = `${startX}px`;
+    
+    const flightDuration = 18000 + Math.random() * 5000; // 18-23 saniye
+    
+    // Akıcı Uçuş Animasyonu
+    const flightAnim = critter.animate([
+        { transform: `translateX(0px) translateY(0px)` },
+        { transform: `translateX(${(endX - startX) * 0.5}px) translateY(-30px)` },
+        { transform: `translateX(${endX - startX}px) translateY(10px)` }
+    ], {
+        duration: flightDuration,
+        easing: 'ease-in-out'
+    });
+    
+    // Tıklanma Etkileşimi
+    let wasClicked = false;
+    critter.addEventListener('click', (e) => {
+        if (wasClicked) return;
+        wasClicked = true;
+        critter.classList.add('clicked');
+        
+        if (isOwl) {
+            sfx.hoot();
+        } else {
+            sfx.meow();
+        }
+        
+        burstHearts(e.clientX, e.clientY);
+        
+        const tag = critter.querySelector('.critter-tag');
+        if (tag) {
+            tag.innerHTML = isOwl ? '<strong>*Hoo! Harikasın Betö! 💖*</strong>' : '<strong>*Mırrr... En tatlı insan! 🐾*</strong>';
+        }
+        
+        setTimeout(() => {
+            critter.classList.remove('clicked');
+            wasClicked = false;
+        }, 700);
+    });
+    
+    critterSkyContainer.appendChild(critter);
+    
+    flightAnim.onfinish = () => {
+        if (critter.parentNode) critter.remove();
+    };
+}
+
+// "Dostları Çağır" Butonu Etkileşimi
+if (summonCrittersBtn) {
+    summonCrittersBtn.addEventListener('click', () => {
+        sfx.init();
+        sfx.pop();
+        spawnFlyingCritter('owl');
+        setTimeout(() => spawnFlyingCritter('cat'), 500);
+        for (let i = 0; i < 8; i++) {
+            setTimeout(spawnLavenderPetal, i * 180);
+        }
+        launchConfetti();
+    });
+}
+
+// Atmosfer Döngüleri
+function startAtmosphere() {
+    // 1. Lavanta esintisi: Her 4.5 saniyede bir yaprak
+    setInterval(spawnLavenderPetal, 4500);
+    for (let i = 0; i < 4; i++) {
+        setTimeout(spawnLavenderPetal, i * 800);
+    }
+    
+    // 2. İlk baykuş 4. saniyede, ilk kedi 12. saniyede süzülsün
+    setTimeout(() => {
+        spawnFlyingCritter('owl');
+    }, 4000);
+    
+    setTimeout(() => {
+        spawnFlyingCritter('cat');
+    }, 12000);
+    
+    // 3. Sonrasında her 22-28 saniyede bir ziyaretçi gelsin
+    setInterval(() => {
+        spawnFlyingCritter();
+    }, 24000);
+}
+
 // Sayfa yüklendiğinde ilk çizim ve kayıtlı notları yükle
 window.addEventListener('DOMContentLoaded', () => {
     initGame();
     drawGame();
     loadStoredNotes();
+    startAtmosphere();
 });

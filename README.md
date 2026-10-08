@@ -23,7 +23,12 @@ Bu proje, arkadaşın için özel olarak hazırlanmış modern, etkileşimli ve 
    - **Ödül Ekranı:** Özelleştirilebilir doğum günü ödülü (örn. kahve kuponu, özel hediye vb.) modali açılır.
 6. **Özel Doğum Günü Mektubu:** İçten ve duygusal hazır mektup metni.
 7. **Dilek Duvarı (Ziyaretçi Defteri):** Renkli post-it notları ve ziyaretçilerin tarayıcıda kalıcı olarak yeni not ekleyebildiği form.
-8. **Dahili Ses Efektleri (Web Audio API):** Harici MP3 dosyası indirmeye gerek olmadan çalışan hafif ve tatlı retro ses efektleri (sağ alttan açılıp kapatılabilir).
+8. **Dahili Ses Efektleri (Web Audio API):** Harici MP3 dosyası indirmeye gerek olmadan çalışan hafif ve tatlı retro ses efektleri (baykuş ötüşü, kedi miyavlaması, yılan oyunu ve pasta kutlaması sesleri).
+9. **Uçan Baykuşlar, Kediler & Lavanta Esintisi (Özel Atmosfer):**
+   - **Lavanta Yaprakları:** Sayfada rüzgarla süzülen hafif lavanta çiçekleri (üzerlerine tıklanınca kalpler çıkar).
+   - **Zaman Ayarlı Uçuşlar:** Her 20-30 saniyede bir ekranda süzülen bilge baykuş (`🦉`) ve balonlu sevimli kedi (`🐱🎈`).
+   - **Tıklanma Etkileşimi:** Baykuşa tıklandığında sevimli ötüş sesi (`Hoo-hoo!`), kediye tıklandığında miyavlama sesi ve etrafa ışıltılı kalpler (`💜💖✨`) saçar.
+   - **"Dostları Çağır" Butonu:** Sağ alttaki butonla dilediğin an tüm dostları ve lavantaları ekrana çağırabilirsin.
 
 ---
 
