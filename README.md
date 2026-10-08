@@ -10,11 +10,17 @@ Bu proje, arkadaşın için özel olarak hazırlanmış modern, etkileşimli ve 
 2. **İnteraktif Doğum Günü Pastası (Mum Üfleme):** Tıklandığında mumun söndüğü, duman çıkardığı, konfetilerin patladığı ve dilek mesajının belirdiği interaktif pasta.
 3. **Zaman Tüneli & Hatıralar (Timeline):** Birlikte geçirilen unutulmaz anlar için hazır kartlar ve fotoğraf yerleştirme alanları.
 4. **Neden Harikasın? (Karakter Özellikleri):** Arkadaşını özel kılan sevimli ve samimi özelliklerin listelendiği cam efektli (glassmorphism) kartlar.
-5. **Mini Yılan Oyunu (Snake Game):**
-   - **Hedef:** 10 Puan!
-   - 10 puana ulaşıldığında oyun durur, zafer melodisi çalar ve büyük konfeti yağmuru başlar.
-   - **Ödül Ekranı:** "YOU WON!" ve özelleştirilebilir doğum günü ödülü (örn. kahve kuponu, özel hediye vb.) modali açılır.
-   - Hem klavye (WASD / Ok tuşları) hem de telefonlar/dokunmatik ekranlar için yön butonları desteklenir.
+5. **BMO ile Mini Yılan Oyunu (Adventure Time Özel Tasarımı):**
+   - **BMO Konsol Mimarisi:** Sevimli BMO karakterinin nane yeşili gövdesi, kolları, ayakları, kaset yuvası ve yan kabartmalarıyla özel olarak modellendi.
+   - **Gülümseyen Yüz:** Oyuna başlamadan önce BMO ekranda gözlerini kırparak gülümser (*"Video oyunu oynayalım mı? Yüzüme tıkla!"*). Yüzüne tıklandığında sevimli bir uyanma melodisiyle oyun doğrudan BMO'nun ekranında başlar!
+   - **BMO Üzerindeki Tuşlarla Kontrol:**
+     - **Sarı Artı Tuşu (D-PAD):** BMO'nun gövdesindeki sarı yön tuşlarına basarak yılanı yönlendirebilirsin (dokunmatik ekranlarda mükemmel çalışır).
+     - **[A] Mavi Daire Tuş:** Oyunu başlatır / yeniden başlatır.
+     - **[B] Yeşil Daire Tuş:** BMO ses efektlerini açar / kapatır.
+     - **[▲] Kırmızı Üçgen Tuş:** BMO konfeti patlatır!
+     - Masaüstünde klavyeden **WASD** veya **Yön Tuşları** da kullanılabilir.
+   - **Hedef:** 10 Puan! 10 puana ulaşıldığında oyun durur, BMO zafer kutlaması yapar ve **"BMO ONAYLI ŞAMPİYON! / YOU WON!"** ödül modali açılır.
+   - **Ödül Ekranı:** Özelleştirilebilir doğum günü ödülü (örn. kahve kuponu, özel hediye vb.) modali açılır.
 6. **Özel Doğum Günü Mektubu:** İçten ve duygusal hazır mektup metni.
 7. **Dilek Duvarı (Ziyaretçi Defteri):** Renkli post-it notları ve ziyaretçilerin tarayıcıda kalıcı olarak yeni not ekleyebildiği form.
 8. **Dahili Ses Efektleri (Web Audio API):** Harici MP3 dosyası indirmeye gerek olmadan çalışan hafif ve tatlı retro ses efektleri (sağ alttan açılıp kapatılabilir).

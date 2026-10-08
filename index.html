@@ -232,70 +232,156 @@
                     </div>
 
                     <div class="trait-card">
-                        <div class="trait-emoji">🌈</div>
-                        <h3>Orijinal ve Kendin Olman</h3>
-                        <p>Kimseye benzemeyen tarzın, kendine has düşüncelerin ve samimiyetin en büyük güzelliğin.</p>
+                        <div class="trait-emoji">🤖</div>
+                        <h3>BMO Ruhlu Sevimlilik</h3>
+                        <p>Tıpkı Adventure Time'daki BMO gibi; her duruma pozitif bakan, etrafına tatlılık ve neşe saçan o eşsiz enerjin!</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. DOĞUM GÜNÜ YILAN OYUNU (SNAKE GAME) -->
+        <!-- 5. BMO İLE DOĞUM GÜNÜ YILAN OYUNU (ADVENTURE TIME TEMASI) -->
         <section id="game-section" class="game-section">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-tag">Özel Görev</span>
-                    <h2 class="section-title">Doğum Günü Yılanı 🐍🎂</h2>
+                    <span class="section-tag">Adventure Time Özel Görevi</span>
+                    <h2 class="section-title">BMO ile Yılan Oyunu! 🤖🎮</h2>
                     <p class="section-subtitle">
-                        Pastaları topla ve <strong>10 puana</strong> ulaşarak doğum günü hediyeni aç!
+                        <em>"Kim video oyunu oynamak ister?"</em> — BMO'nun gülümseyen yüzüne tıkla, pastaları toplayıp <strong>10 puana</strong> ulaş ve doğum günü hediyeni kap!
                     </p>
                 </div>
 
-                <div class="arcade-card">
-                    <!-- Skor Tablosu -->
-                    <div class="arcade-header">
-                        <div class="score-box">
-                            <span class="score-label">SKOR</span>
-                            <span id="currentScore" class="score-value">0</span>
+                <!-- BMO KARAKTER GÖVDESİ & OYUN KONSOLU -->
+                <div class="bmo-wrapper">
+                    <!-- BMO Sol Kol -->
+                    <div class="bmo-arm bmo-arm-left">
+                        <div class="bmo-hand"></div>
+                    </div>
+
+                    <!-- BMO Ana Gövdesi (Teal/Mint Kasa) -->
+                    <div class="bmo-body">
+                        <!-- BMO Üst Havalandırma Çizgileri -->
+                        <div class="bmo-top-vents">
+                            <span></span><span></span><span></span>
                         </div>
-                        <div class="goal-box">
-                            <span class="goal-label">HEDEF</span>
-                            <span class="goal-value">10 Puan</span>
+
+                        <!-- BMO Yazıları (Yan taraflarda kabartma) -->
+                        <div class="bmo-side-branding bmo-brand-left">BMO</div>
+                        <div class="bmo-side-branding bmo-brand-right">BMO</div>
+
+                        <!-- Skor ve Hedef Barı (BMO'nun Ekran Üstü Paneli) -->
+                        <div class="bmo-status-bar">
+                            <div class="bmo-status-pill">
+                                <span class="bmo-pill-label">SKOR</span>
+                                <span id="currentScore" class="bmo-pill-val">0</span>
+                            </div>
+                            <div class="bmo-status-pill bmo-target-pill">
+                                <span class="bmo-pill-label">HEDEF</span>
+                                <span class="bmo-pill-val">10 Puan</span>
+                            </div>
+                            <div class="bmo-status-pill">
+                                <span class="bmo-pill-label">REKOR</span>
+                                <span id="highScore" class="bmo-pill-val">0</span>
+                            </div>
                         </div>
-                        <div class="high-score-box">
-                            <span class="score-label">EN YÜKSEK</span>
-                            <span id="highScore" class="score-value">0</span>
+
+                        <!-- BMO EKRANI (Face / Screen) -->
+                        <div class="bmo-screen-frame">
+                            <div class="bmo-screen" id="bmoScreen">
+                                <!-- CRT Cam Yansıması ve Scanline Efekti -->
+                                <div class="bmo-screen-glare"></div>
+                                <div class="bmo-screen-scanlines"></div>
+
+                                <!-- 1. Gülümseyen BMO Yüzü (Oyuna Başlamadan Önce / Bitince) -->
+                                <div id="bmoFace" class="bmo-face-layer" title="Oyunu Başlatmak İçin BMO'nun Yüzüne Tıkla!">
+                                    <div class="bmo-face-content">
+                                        <div class="bmo-eyes">
+                                            <div class="bmo-eye eye-left"></div>
+                                            <div class="bmo-eye eye-right"></div>
+                                        </div>
+                                        <div class="bmo-cheeks">
+                                            <div class="bmo-blush blush-left"></div>
+                                            <div class="bmo-blush blush-right"></div>
+                                        </div>
+                                        <div id="bmoMouth" class="bmo-mouth">
+                                            <svg viewBox="0 0 50 25" width="46" height="22">
+                                                <path d="M 6,5 Q 25,24 44,5" fill="none" stroke="#1d4e44" stroke-width="5" stroke-linecap="round"/>
+                                            </svg>
+                                        </div>
+                                        <div class="bmo-bubble">
+                                            <span id="bmoSpeechText">"Video oyunu oynayalım mı? Yüzüme tıkla!" 🎮</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 2. Yılan Oyunu Canvas'ı (BMO Ekranında Oynanır) -->
+                                <canvas id="snakeCanvas" width="360" height="360"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Kaset / Disket Yuvası (BMO Slot) -->
+                        <div class="bmo-slot-area">
+                            <div class="bmo-cassette-slot">
+                                <div class="bmo-slot-arrow"></div>
+                            </div>
+                        </div>
+
+                        <!-- BMO KONTROL PANELİ & TUŞLAR (Oyun BMO üzerindeki bu tuşlarla oynanır) -->
+                        <div class="bmo-controls-panel">
+                            <!-- BMO Sarı Artı Yön Tuşu (D-PAD) -->
+                            <div class="bmo-dpad-wrapper">
+                                <div class="bmo-dpad">
+                                    <button class="bmo-dpad-btn dpad-up" data-dir="UP" aria-label="Yukarı">▲</button>
+                                    <button class="bmo-dpad-btn dpad-left" data-dir="LEFT" aria-label="Sol">◀</button>
+                                    <div class="bmo-dpad-center"></div>
+                                    <button class="bmo-dpad-btn dpad-right" data-dir="RIGHT" aria-label="Sağ">▶</button>
+                                    <button class="bmo-dpad-btn dpad-down" data-dir="DOWN" aria-label="Aşağı">▼</button>
+                                </div>
+                                <span class="dpad-caption">D-PAD</span>
+                            </div>
+
+                            <!-- BMO Orta Düğmeler (Kırmızı Üçgen & Küçük Yuvalar) -->
+                            <div class="bmo-mid-section">
+                                <button id="bmoTriangleBtn" class="bmo-triangle-btn" title="Konfeti Patlat! 🎊" aria-label="Üçgen Tuş">
+                                    ▲
+                                </button>
+                                <div class="bmo-slots-mini">
+                                    <div class="bmo-mini-pill"></div>
+                                    <div class="bmo-mini-pill"></div>
+                                </div>
+                            </div>
+
+                            <!-- BMO Aksiyon Düğmeleri (Mavi ve Yeşil Daire Tuşlar) -->
+                            <div class="bmo-action-btns">
+                                <div class="bmo-action-col">
+                                    <button id="bmoBlueBtn" class="bmo-round-btn btn-blue" title="Oyunu Başlat / Yeniden Başlat" aria-label="Başlat Düğmesi">
+                                        <span>A</span>
+                                    </button>
+                                    <span class="btn-subtext">BAŞLAT</span>
+                                </div>
+                                <div class="bmo-action-col">
+                                    <button id="bmoGreenBtn" class="bmo-round-btn btn-green" title="Ses Aç/Kapat" aria-label="Ses Düğmesi">
+                                        <span>B</span>
+                                    </button>
+                                    <span class="btn-subtext">SES</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bmo-instruction-hint">
+                            🎮 BMO üzerindeki <strong>sarı tuşlara</strong> bas veya klavyeden <strong>WASD / Yön Tuşları</strong> kullan!
                         </div>
                     </div>
 
-                    <!-- Canvas Alanı -->
-                    <div class="canvas-wrapper">
-                        <canvas id="snakeCanvas" width="400" height="400"></canvas>
-                        
-                        <!-- Başlangıç / Durdurma Ekranı -->
-                        <div id="gameOverlay" class="game-overlay">
-                            <div class="overlay-content">
-                                <div class="overlay-icon">🎮</div>
-                                <h3 id="overlayTitle">Hazır Mısın?</h3>
-                                <p id="overlayMessage">Pastaları (🎂) topla. 10 puana ulaşınca ödülü kap!</p>
-                                <button id="startGameBtn" class="btn btn-primary btn-game">Oyunu Başlat</button>
-                            </div>
-                        </div>
+                    <!-- BMO Sağ Kol -->
+                    <div class="bmo-arm bmo-arm-right">
+                        <div class="bmo-hand"></div>
                     </div>
 
-                    <!-- Kontrol Tuşları (Mobil & Dokunmatik İçin) -->
-                    <div class="arcade-controls">
-                        <div class="keyboard-hint">
-                            <span>Klavye: <strong>W, A, S, D</strong> veya <strong>Yön Tuşları</strong></span>
-                        </div>
-                        <div class="d-pad">
-                            <button class="d-btn up" data-dir="UP" aria-label="Yukarı">⬆️</button>
-                            <div class="d-row">
-                                <button class="d-btn left" data-dir="LEFT" aria-label="Sol">⬅️</button>
-                                <button class="d-btn down" data-dir="DOWN" aria-label="Aşağı">⬇️</button>
-                                <button class="d-btn right" data-dir="RIGHT" aria-label="Sağ">➡️</button>
-                            </div>
-                        </div>
+                    <!-- BMO Ayakları -->
+                    <div class="bmo-feet">
+                        <div class="bmo-foot foot-left"></div>
+                        <div class="bmo-foot foot-right"></div>
                     </div>
                 </div>
             </div>
@@ -367,11 +453,12 @@
     <div id="winModal" class="modal-backdrop">
         <div class="modal-card win-modal-card">
             <div class="modal-sparkle-bg"></div>
-            <div class="trophy-badge">🏆</div>
-            <h2 class="modal-title">TEBRİKLER! KAZANDIN! 🎉</h2>
+            <div class="trophy-badge">🏆🤖</div>
+            <h2 class="modal-title">BMO ONAYLI ŞAMPİYON! 🎉</h2>
             <div class="win-tag">YOU WON!</div>
             <p class="modal-message">
-                10 puana ulaştın ve oyunu başarıyla tamamladın! İşte senin için hazırlanan özel doğum günü hediyesi:
+                BMO diyor ki: <em>"Yay Betö! 10 puana ulaştın ve oyunu bitirdin!"</em><br>
+                İşte senin için hazırlanan özel doğum günü hediyesi:
             </p>
             <div class="reward-box">
                 <div class="reward-icon">🎁</div>

@@ -89,6 +89,17 @@ class SoundEffects {
             }, idx * 160);
         });
     }
+
+    // BMO Açılış / Uyanma Melodisi
+    bmoChime() {
+        if (!this.enabled) return;
+        const notes = [261.63, 329.63, 392.00, 523.25]; // C4, E4, G4, C5
+        notes.forEach((f, idx) => {
+            setTimeout(() => {
+                this.playTone(f, 'sine', 0.12, 0.2);
+            }, idx * 70);
+        });
+    }
 }
 
 const sfx = new SoundEffects();
@@ -170,21 +181,29 @@ blowCandleBtn.addEventListener('click', () => {
     }
 });
 
-// --- YILAN OYUNU (SNAKE GAME - 10 PUANDA BİTEN VE ÖDÜL VEREN) ---
+// --- BMO İLE DOĞUM GÜNÜ YILAN OYUNU (10 PUANDA BİTEN & ÖDÜLLÜ) ---
 const canvas = document.getElementById('snakeCanvas');
 const ctx = canvas.getContext('2d');
 const currentScoreEl = document.getElementById('currentScore');
 const highScoreEl = document.getElementById('highScore');
-const gameOverlay = document.getElementById('gameOverlay');
-const overlayTitle = document.getElementById('overlayTitle');
-const overlayMessage = document.getElementById('overlayMessage');
-const startGameBtn = document.getElementById('startGameBtn');
+
+// BMO Arayüz Elemanları
+const bmoFace = document.getElementById('bmoFace');
+const bmoScreen = document.getElementById('bmoScreen');
+const bmoSpeechText = document.getElementById('bmoSpeechText');
+const bmoMouth = document.getElementById('bmoMouth');
+const bmoBlueBtn = document.getElementById('bmoBlueBtn');
+const bmoGreenBtn = document.getElementById('bmoGreenBtn');
+const bmoTriangleBtn = document.getElementById('bmoTriangleBtn');
+const bmoDpadBtns = document.querySelectorAll('.bmo-dpad-btn');
+
+// Ödül Modalı Elemanları
 const winModal = document.getElementById('winModal');
 const claimRewardBtn = document.getElementById('claimRewardBtn');
 const playAgainBtn = document.getElementById('playAgainBtn');
 
-const GRID_SIZE = 20; // 20x20 kare
-const TILE_COUNT = canvas.width / GRID_SIZE; // 400 / 20 = 20
+const GRID_SIZE = 18; // 360 / 18 = 20x20 kare
+const TILE_COUNT = canvas.width / GRID_SIZE; // 20
 const TARGET_SCORE = 10;
 
 let snake = [];
@@ -200,6 +219,11 @@ highScoreEl.textContent = highScore;
 let gameLoopInterval = null;
 let isPlaying = false;
 const GAME_SPEED = 120; // ms
+
+// BMO Ağız İfadeleri
+const MOUTH_SMILE = `<svg viewBox="0 0 50 25" width="46" height="22"><path d="M 6,5 Q 25,24 44,5" fill="none" stroke="#1d4e44" stroke-width="5" stroke-linecap="round"/></svg>`;
+const MOUTH_SAD = `<svg viewBox="0 0 50 25" width="46" height="22"><path d="M 6,18 Q 25,4 44,18" fill="none" stroke="#1d4e44" stroke-width="5" stroke-linecap="round"/></svg>`;
+const MOUTH_WIN = `<svg viewBox="0 0 50 25" width="46" height="22"><path d="M 5,3 Q 25,27 45,3 Z" fill="#1d4e44" stroke="#1d4e44" stroke-width="2" stroke-linejoin="round"/></svg>`;
 
 function initGame() {
     snake = [
@@ -223,7 +247,6 @@ function spawnFood() {
             x: Math.floor(Math.random() * TILE_COUNT),
             y: Math.floor(Math.random() * TILE_COUNT)
         };
-        // Yılanın üstüne gelmesin
         valid = !snake.some(segment => segment.x === food.x && segment.y === food.y);
     }
 }
@@ -250,7 +273,7 @@ function updateGame() {
 
     snake.unshift(head);
 
-    // Yiyecek (Pasta) yendi mi?
+    // Yiyecek (Pasta 🎂) yendi mi?
     if (head.x === food.x && head.y === food.y) {
         score++;
         currentScoreEl.textContent = score;
@@ -277,12 +300,12 @@ function updateGame() {
 }
 
 function drawGame() {
-    // Arka planı temizle
-    ctx.fillStyle = '#090814';
+    // BMO CRT Nane Yeşili Arka Plan
+    ctx.fillStyle = '#9fe2c7';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // İnce grid ızgarası
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+    // İnce Retro Izgara Çizgileri
+    ctx.strokeStyle = 'rgba(27, 78, 68, 0.08)';
     ctx.lineWidth = 1;
     for (let i = 0; i < canvas.width; i += GRID_SIZE) {
         ctx.beginPath();
@@ -296,61 +319,65 @@ function drawGame() {
         ctx.stroke();
     }
 
-    // Yiyeceği çiz (Doğum günü pastası 🎂)
-    ctx.font = '16px serif';
+    // Yiyecek: Doğum Günü Pastası 🎂
+    ctx.font = '15px sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('🎂', (food.x * GRID_SIZE) + GRID_SIZE / 2, (food.y * GRID_SIZE) + GRID_SIZE / 2 + 1);
 
-    // Yılanı çiz
+    // Yılan Çizimi (BMO Retro Koyu Yeşil Stili)
     snake.forEach((segment, index) => {
         const isHead = index === 0;
         const x = segment.x * GRID_SIZE;
         const y = segment.y * GRID_SIZE;
 
         if (isHead) {
-            // Yılan kafası (Glow efektli neon pembe/mor)
-            ctx.fillStyle = '#ff2a85';
-            ctx.shadowColor = '#ff2a85';
-            ctx.shadowBlur = 10;
+            // Yılan Kafası
+            ctx.fillStyle = '#0f3a31';
             ctx.beginPath();
-            ctx.roundRect(x + 1, y + 1, GRID_SIZE - 2, GRID_SIZE - 2, 6);
+            ctx.roundRect(x + 1, y + 1, GRID_SIZE - 2, GRID_SIZE - 2, 5);
             ctx.fill();
-            ctx.shadowBlur = 0;
 
-            // Gözler
+            // Yılanın gözleri
             ctx.fillStyle = '#ffffff';
             const eyeSize = 3;
-            if (dx === 1) { // Sağa giderken
-                ctx.fillRect(x + 13, y + 4, eyeSize, eyeSize);
-                ctx.fillRect(x + 13, y + 13, eyeSize, eyeSize);
-            } else if (dx === -1) { // Sola giderken
-                ctx.fillRect(x + 4, y + 4, eyeSize, eyeSize);
-                ctx.fillRect(x + 4, y + 13, eyeSize, eyeSize);
-            } else if (dy === -1) { // Yukarı giderken
-                ctx.fillRect(x + 4, y + 4, eyeSize, eyeSize);
-                ctx.fillRect(x + 13, y + 4, eyeSize, eyeSize);
-            } else { // Aşağı giderken
-                ctx.fillRect(x + 4, y + 13, eyeSize, eyeSize);
-                ctx.fillRect(x + 13, y + 13, eyeSize, eyeSize);
+            if (dx === 1) { // Sağa
+                ctx.fillRect(x + 11, y + 3, eyeSize, eyeSize);
+                ctx.fillRect(x + 11, y + 11, eyeSize, eyeSize);
+            } else if (dx === -1) { // Sola
+                ctx.fillRect(x + 3, y + 3, eyeSize, eyeSize);
+                ctx.fillRect(x + 3, y + 11, eyeSize, eyeSize);
+            } else if (dy === -1) { // Yukarı
+                ctx.fillRect(x + 3, y + 3, eyeSize, eyeSize);
+                ctx.fillRect(x + 11, y + 3, eyeSize, eyeSize);
+            } else { // Aşağı
+                ctx.fillRect(x + 3, y + 11, eyeSize, eyeSize);
+                ctx.fillRect(x + 11, y + 11, eyeSize, eyeSize);
             }
         } else {
-            // Yılan gövdesi (Geçişli renk)
-            const progress = index / snake.length;
-            ctx.fillStyle = progress > 0.5 ? '#8b5cf6' : '#c084fc';
+            // Yılan Gövdesi
+            ctx.fillStyle = '#1c564a';
             ctx.beginPath();
             ctx.roundRect(x + 2, y + 2, GRID_SIZE - 4, GRID_SIZE - 4, 4);
             ctx.fill();
+
+            // İnce iç vurgu
+            ctx.fillStyle = '#267060';
+            ctx.fillRect(x + 5, y + 5, GRID_SIZE - 10, GRID_SIZE - 10);
         }
     });
 }
 
-function startGame() {
+function startBmoGame() {
     sfx.init();
+    sfx.bmoChime();
+
+    // BMO yüzünü gizle ve oyunu başlat
+    bmoFace.classList.add('hidden');
     initGame();
     isPlaying = true;
-    gameOverlay.classList.add('hidden');
     drawGame();
+
     if (gameLoopInterval) clearInterval(gameLoopInterval);
     gameLoopInterval = setInterval(updateGame, GAME_SPEED);
 }
@@ -360,10 +387,10 @@ function gameOver() {
     clearInterval(gameLoopInterval);
     sfx.lose();
 
-    overlayTitle.textContent = "Ah, Çarptın! 💥";
-    overlayMessage.textContent = `Skorun: ${score} / ${TARGET_SCORE}. Hediyeyi kazanmak için 10 yapmalısın!`;
-    startGameBtn.textContent = "Tekrar Dene 🔄";
-    gameOverlay.classList.remove('hidden');
+    // BMO üzgün ifadeye bürünür
+    bmoMouth.innerHTML = MOUTH_SAD;
+    bmoSpeechText.innerHTML = `Ah çarptın! 💥 Skor: ${score}/${TARGET_SCORE}<br><strong>Tekrar oynamak için yüzüme tıkla!</strong>`;
+    bmoFace.classList.remove('hidden');
 }
 
 function triggerWin() {
@@ -372,17 +399,34 @@ function triggerWin() {
     sfx.victory();
     launchConfetti();
 
-    // Birkaç saniye aralıklarla ekstra konfetiler
+    // BMO süper mutlu zafer ifadesi takınır
+    bmoMouth.innerHTML = MOUTH_WIN;
+    bmoSpeechText.innerHTML = `🏆 YAY! 10 PUAN! KAZANDIN BETÖ! 🥳`;
+    bmoFace.classList.remove('hidden');
+
     setTimeout(() => launchConfetti(), 400);
     setTimeout(() => launchConfetti(), 900);
 
     // Kazanma modalını aç
-    winModal.classList.add('active');
+    setTimeout(() => {
+        winModal.classList.add('active');
+    }, 600);
 }
+
+// BMO Yüzüne veya Ekranına Tıklayarak Oyunu Başlatma
+bmoFace.addEventListener('click', () => {
+    // Gülümseyen ağzı sıfırla
+    bmoMouth.innerHTML = MOUTH_SMILE;
+    bmoSpeechText.innerHTML = `"Video oyunu oynayalım mı? Yüzüme tıkla!" 🎮`;
+    startBmoGame();
+});
 
 // Yön Kontrol Fonksiyonu
 function changeDirection(dir) {
-    if (!isPlaying) return;
+    if (!isPlaying) {
+        startBmoGame();
+        return;
+    }
     switch (dir) {
         case 'UP':
             if (dy !== 1) { nextDx = 0; nextDy = -1; }
@@ -399,7 +443,7 @@ function changeDirection(dir) {
     }
 }
 
-// Klavye Kontrolleri
+// Klavye Kontrolleri (WASD & Ok Tuşları)
 window.addEventListener('keydown', (e) => {
     const key = e.key.toLowerCase();
     if (['arrowup', 'w'].includes(key)) {
@@ -417,16 +461,41 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-// Ekran Üstü D-Pad Kontrolleri
-document.querySelectorAll('.d-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+// BMO Üzerindeki Sarı Artı D-PAD Tuşları İle Oynama
+bmoDpadBtns.forEach(btn => {
+    // Hem click hem pointerdown desteği (mobil dokunmatik tepki süresi için mükemmel)
+    btn.addEventListener('pointerdown', (e) => {
         e.preventDefault();
         const dir = btn.getAttribute('data-dir');
         changeDirection(dir);
     });
 });
 
-startGameBtn.addEventListener('click', startGame);
+// BMO [A] Mavi Tuş: Oyunu Başlat / Yeniden Başlat
+bmoBlueBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    bmoMouth.innerHTML = MOUTH_SMILE;
+    startBmoGame();
+});
+
+// BMO [B] Yeşil Tuş: Sesi Aç / Kapat
+bmoGreenBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    sfx.init();
+    sfx.enabled = !sfx.enabled;
+    const soundToggle = document.getElementById('soundToggleBtn');
+    const soundIcon = document.getElementById('soundIcon');
+    if (soundIcon) soundIcon.textContent = sfx.enabled ? '🔊' : '🔇';
+    sfx.playTone(520, 'sine', 0.1, 0.1);
+});
+
+// BMO [▲] Kırmızı Üçgen Tuş: Eğlenceli Konfeti Patlaması
+bmoTriangleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    sfx.init();
+    sfx.pop();
+    launchConfetti();
+});
 
 // Ödül Modalı Butonları
 claimRewardBtn.addEventListener('click', () => {
@@ -436,7 +505,8 @@ claimRewardBtn.addEventListener('click', () => {
 
 playAgainBtn.addEventListener('click', () => {
     winModal.classList.remove('active');
-    startGame();
+    bmoMouth.innerHTML = MOUTH_SMILE;
+    startBmoGame();
 });
 
 // Modal dışına tıklayınca kapatma
