@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.0">
+    <link rel="stylesheet" href="style.css?v=3.5">
 </head>
 <body>
     <!-- Arka Plan Işık Efektleri & Lavanta/Dostlar Katmanı -->
@@ -179,7 +179,7 @@
                     <span class="section-tag">Adventure Time Özel Görevi</span>
                     <h2 class="section-title">BMO ile Yılan Oyunu! 🤖🎮</h2>
                     <p class="section-subtitle">
-                        <em>"Kim video oyunu oynamak ister?"</em> — BMO'nun gülümseyen yüzüne tıkla, pastaları toplayıp <strong>10 puana</strong> ulaş ve doğum günü hediyeni kap!
+                        <em>"Kim video oyunu oynamak ister?"</em> — BMO'nun gülümseyen yüzüne tıkla, pastaları topla, rekorunu kır ve eğlencenin tadını çıkar! 🎮
                     </p>
                 </div>
 
@@ -201,15 +201,11 @@
                         <div class="bmo-side-branding bmo-brand-left">BMO</div>
                         <div class="bmo-side-branding bmo-brand-right">BMO</div>
 
-                        <!-- Skor ve Hedef Barı (BMO'nun Ekran Üstü Paneli) -->
+                        <!-- Skor ve Rekor Barı (BMO'nun Ekran Üstü Paneli) -->
                         <div class="bmo-status-bar">
                             <div class="bmo-status-pill">
                                 <span class="bmo-pill-label">SKOR</span>
                                 <span id="currentScore" class="bmo-pill-val">0</span>
-                            </div>
-                            <div class="bmo-status-pill bmo-target-pill">
-                                <span class="bmo-pill-label">HEDEF</span>
-                                <span class="bmo-pill-val">10 Puan</span>
                             </div>
                             <div class="bmo-status-pill">
                                 <span class="bmo-pill-label">REKOR</span>
@@ -302,6 +298,11 @@
 
                         <div class="bmo-instruction-hint">
                             🎮 BMO üzerindeki <strong>sarı tuşlara</strong> bas veya klavyeden <strong>WASD / Yön Tuşları</strong> kullan!
+                        </div>
+                        <div class="bmo-gift-cta">
+                            <button id="openRewardBtn" class="bmo-reward-btn" type="button" title="Doğum günü sürprizini aç">
+                                <span>🎁 Doğum Günü Hediyesini Aç ✨</span>
+                            </button>
                         </div>
                     </div>
 
@@ -409,9 +410,9 @@
             <div class="modal-sparkle-bg"></div>
             <div class="trophy-badge">🏆🤖</div>
             <h2 class="modal-title">BMO ONAYLI ŞAMPİYON! 🎉</h2>
-            <div class="win-tag">YOU WON!</div>
+            <div class="win-tag">DOĞUM GÜNÜ SÜRPRİZİ! 🎁</div>
             <p class="modal-message">
-                BMO diyor ki: <em>"Yay Betö! 10 puana ulaştın ve oyunu bitirdin!"</em><br>
+                BMO diyor ki: <em>"Yay Betö! Harika bir oyun çıkardın!"</em><br>
                 İşte senin için hazırlanan özel doğum günü hediyesi:
             </p>
             <div class="reward-box">
@@ -473,6 +474,6 @@
 
     <!-- Konfeti Efekti ve Mantık Scripti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-    <script src="script.js?v=3.0"></script>
+    <script src="script.js?v=3.5"></script>
 </body>
 </html>

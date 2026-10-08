@@ -235,10 +235,10 @@ const bmoDpadBtns = document.querySelectorAll('.bmo-dpad-btn');
 const winModal = document.getElementById('winModal');
 const claimRewardBtn = document.getElementById('claimRewardBtn');
 const playAgainBtn = document.getElementById('playAgainBtn');
+const openRewardBtn = document.getElementById('openRewardBtn');
 
 const GRID_SIZE = 18; // 360 / 18 = 20x20 kare
 const TILE_COUNT = canvas.width / GRID_SIZE; // 20
-const TARGET_SCORE = 10;
 
 let snake = [];
 let food = { x: 5, y: 5 };
@@ -276,12 +276,14 @@ function initGame() {
 
 function spawnFood() {
     let valid = false;
-    while (!valid) {
+    let attempts = 0;
+    while (!valid && attempts < 500) {
         food = {
             x: Math.floor(Math.random() * TILE_COUNT),
             y: Math.floor(Math.random() * TILE_COUNT)
         };
         valid = !snake.some(segment => segment.x === food.x && segment.y === food.y);
+        attempts++;
     }
 }
 
@@ -319,10 +321,9 @@ function updateGame() {
             localStorage.setItem('beto_snake_highscore', highScore);
         }
 
-        // 10 PUANA ULAŞTI MI? (KAZANMA ŞARTI)
-        if (score >= TARGET_SCORE) {
-            triggerWin();
-            return;
+        // 10 ve katlarında oyunu hiç durdurmadan tatlı bir konfeti patlat
+        if (score > 0 && score % 10 === 0) {
+            launchConfetti(1);
         }
 
         spawnFood();
@@ -423,7 +424,11 @@ function gameOver() {
 
     // BMO üzgün ifadeye bürünür
     bmoMouth.innerHTML = MOUTH_SAD;
-    bmoSpeechText.innerHTML = `Ah çarptın! 💥 Skor: ${score}/${TARGET_SCORE}<br><strong>Tekrar oynamak için yüzüme tıkla!</strong>`;
+    if (score > 0 && score >= highScore) {
+        bmoSpeechText.innerHTML = `🎉 Yeni Rekor! Skorun: ${score} 🌟<br><strong>Tekrar oynamak için yüzüme tıkla!</strong>`;
+    } else {
+        bmoSpeechText.innerHTML = `Ah çarptın! 💥 Skor: ${score} | Rekor: ${highScore}<br><strong>Tekrar oynamak için yüzüme tıkla!</strong>`;
+    }
     bmoFace.classList.remove('hidden');
 }
 
@@ -431,20 +436,19 @@ function triggerWin() {
     isPlaying = false;
     clearInterval(gameLoopInterval);
     sfx.victory();
-    launchConfetti();
+    launchConfetti(2);
 
     // BMO süper mutlu zafer ifadesi takınır
     bmoMouth.innerHTML = MOUTH_WIN;
-    bmoSpeechText.innerHTML = `🏆 YAY! 10 PUAN! KAZANDIN BETÖ! 🥳`;
+    bmoSpeechText.innerHTML = `🏆 YAY BETÖ! SÜRPRİZ ZAMANI! 🥳`;
     bmoFace.classList.remove('hidden');
 
     setTimeout(() => launchConfetti(), 400);
-    setTimeout(() => launchConfetti(), 900);
 
-    // Kazanma modalını aç
+    // Ödül modalını aç
     setTimeout(() => {
         winModal.classList.add('active');
-    }, 600);
+    }, 400);
 }
 
 // BMO Yüzüne veya Ekranına Tıklayarak Oyunu Başlatma
@@ -549,6 +553,13 @@ bmoTriangleBtn.addEventListener('click', (e) => {
 });
 
 // Ödül Modalı Butonları
+if (openRewardBtn) {
+    openRewardBtn.addEventListener('click', () => {
+        sfx.init();
+        triggerWin();
+    });
+}
+
 claimRewardBtn.addEventListener('click', () => {
     winModal.classList.remove('active');
     launchConfetti();

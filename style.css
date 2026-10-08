@@ -1313,6 +1313,38 @@ section {
     color: #052e25;
 }
 
+.bmo-gift-cta {
+    margin-top: 14px;
+    text-align: center;
+}
+
+.bmo-reward-btn {
+    background: linear-gradient(135deg, #f59e0b, #ec4899);
+    color: #ffffff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.bmo-reward-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
+}
+
+.bmo-reward-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
 /* 6. MEKTUP BÖLÜMÜ */
 .letter-section {
     padding-top: 40px;

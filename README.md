@@ -19,8 +19,8 @@ Bu proje, arkadaşın için özel olarak hazırlanmış modern, etkileşimli ve 
      - **[B] Yeşil Daire Tuş:** BMO ses efektlerini açar / kapatır.
      - **[▲] Kırmızı Üçgen Tuş:** BMO konfeti patlatır!
      - Masaüstünde klavyeden **WASD** veya **Yön Tuşları** da kullanılabilir.
-   - **Hedef:** 10 Puan! 10 puana ulaşıldığında oyun durur, BMO zafer kutlaması yapar ve **"BMO ONAYLI ŞAMPİYON! / YOU WON!"** ödül modali açılır.
-   - **Ödül Ekranı:** Özelleştirilebilir doğum günü ödülü (örn. kahve kuponu, özel hediye vb.) modali açılır.
+   - **Arcade Modu & Rekor Takibi:** Sınırsız yılan oyunu! Pastaları toplayarak kendi rekorunu kırabilirsin, her 10 puanda tebrik konfetisi patlar.
+   - **Doğum Günü Hediyesi:** BMO'nun altındaki *"🎁 Doğum Günü Hediyesini Aç"* butonuyla veya BMO ile kutlama yaparak hediye penceresi açılabilir.
 6. **Özel Doğum Günü Mektubu:** İçten ve duygusal hazır mektup metni.
 7. **Dilek Duvarı (Ziyaretçi Defteri):** Renkli post-it notları ve ziyaretçilerin tarayıcıda kalıcı olarak yeni not ekleyebildiği form.
 8. **Dahili Ses Efektleri (Web Audio API):** Harici MP3 dosyası indirmeye gerek olmadan çalışan hafif ve tatlı retro ses efektleri (baykuş ötüşü, kedi miyavlaması, yılan oyunu ve pasta kutlaması sesleri).
