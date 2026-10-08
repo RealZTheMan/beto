@@ -365,16 +365,17 @@ section {
 
 .cake {
     position: relative;
-    width: 250px;
-    height: 160px;
+    width: 260px;
+    height: 200px;
+    margin: 0 auto;
 }
 
 .plate {
     position: absolute;
-    bottom: -10px;
-    left: -25px;
-    width: 300px;
-    height: 20px;
+    bottom: 0;
+    left: 10px;
+    width: 240px;
+    height: 18px;
     background: #cbd5e1;
     border-radius: 50%;
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
@@ -386,50 +387,50 @@ section {
 }
 
 .layer-bottom {
-    bottom: 0;
-    left: 25px;
+    bottom: 10px;
+    left: 30px;
     width: 200px;
-    height: 70px;
+    height: 55px;
     background: #d97706;
     border: 3px solid #b45309;
 }
 
 .layer-middle {
-    bottom: 60px;
-    left: 45px;
-    width: 160px;
-    height: 60px;
+    bottom: 62px;
+    left: 55px;
+    width: 150px;
+    height: 48px;
     background: #f43f5e;
     border: 3px solid #e11d48;
 }
 
 .layer-top {
-    bottom: 110px;
-    left: 65px;
-    width: 120px;
-    height: 50px;
+    position: absolute;
+    bottom: 107px;
+    left: 80px;
+    width: 100px;
+    height: 40px;
     background: #fff;
     border: 3px solid #fbcfe8;
-    position: relative;
 }
 
 .strawberry {
     position: absolute;
-    top: -15px;
-    font-size: 1.2rem;
+    top: -14px;
+    font-size: 1.15rem;
 }
 
-.strawberry.s1 { left: 10px; }
-.strawberry.s2 { left: 46px; }
-.strawberry.s3 { left: 82px; }
+.strawberry.s1 { left: 8px; }
+.strawberry.s2 { left: 38px; }
+.strawberry.s3 { left: 68px; }
 
 /* Mum */
 .candle {
     position: absolute;
-    top: -45px;
-    left: 118px;
+    bottom: 145px;
+    left: 123px;
     width: 14px;
-    height: 45px;
+    height: 40px;
     background: repeating-linear-gradient(45deg, #38bdf8, #38bdf8 6px, #fff 6px, #fff 12px);
     border-radius: 4px;
     z-index: 10;
@@ -1224,10 +1225,11 @@ section {
     z-index: 5;
 }
 
-.note-yellow { background: #fef08a; }
-.note-pink   { background: #fbcfe8; }
-.note-blue   { background: #bae6fd; }
-.note-green  { background: #bbf7d0; }
+.note-yellow   { background: #fef08a; }
+.note-pink     { background: #fbcfe8; }
+.note-blue     { background: #bae6fd; }
+.note-green    { background: #bbf7d0; }
+.note-lavender { background: #e9d5ff; }
 
 .note-text {
     font-size: 1rem;
@@ -1398,7 +1400,8 @@ section {
 
 .color-picker-group {
     display: flex;
-    gap: 14px;
+    gap: 16px;
+    margin-top: 8px;
 }
 
 .color-option {
@@ -1412,17 +1415,25 @@ section {
 }
 
 .c-preview {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     display: inline-block;
-    transition: transform 0.2s ease;
-    border: 2px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
+.c-preview.yellow   { background: #fef08a; }
+.c-preview.pink     { background: #fbcfe8; }
+.c-preview.blue     { background: #bae6fd; }
+.c-preview.green    { background: #bbf7d0; }
+.c-preview.lavender { background: #e9d5ff; }
+
 .color-option input:checked + .c-preview {
-    transform: scale(1.25);
-    border-color: #fff;
+    transform: scale(1.22);
+    border-color: #ffffff;
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.75);
 }
 
 /* FOOTER */
