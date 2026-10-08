@@ -649,10 +649,24 @@ section {
     100% { opacity: 0; transform: translateY(-40px) scale(2.5); }
 }
 
+.cake-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
 .btn-blow {
     background: #1e1b4b;
     border: 2px solid var(--accent-pink);
     color: #fff;
+    min-width: 230px;
+    justify-content: center;
+    text-align: center;
 }
 
 .btn-blow:hover {
@@ -667,6 +681,7 @@ section {
     color: #34d399;
     min-height: 28px;
     text-align: center;
+    width: 100%;
 }
 
 /* 3. HATIRALAR (TIMELINE) */
