@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 <body>
     <!-- Arka Plan Işık Efektleri & Lavanta/Dostlar Katmanı -->
@@ -35,7 +35,6 @@
         <div class="nav-container">
             <a href="#hero" class="nav-logo">🎂 Betö'nün Günü</a>
             <nav class="nav-links">
-                <a href="#timeline">Hatıralar</a>
                 <a href="#traits">Neden Harikasın?</a>
                 <a href="#cake-section">Dilek Tut</a>
                 <a href="#game-section" class="nav-highlight">Mini Oyun 🎮</a>
@@ -124,80 +123,7 @@
             </div>
         </section>
 
-        <!-- 3. HATIRALAR & ZAMAN TÜNELİ BÖLÜMÜ -->
-        <section id="timeline" class="timeline-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="section-tag">Zaman Tüneli</span>
-                    <h2 class="section-title">Birlikte Biriktirdiğimiz Anlar 📸</h2>
-                    <p class="section-subtitle">Gülüşmeler, maceralar ve asla unutulmayacak anılar...</p>
-                </div>
-
-                <div class="timeline-grid">
-                    <!-- Hatıra Kartı 1 -->
-                    <div class="memory-card">
-                        <div class="memory-icon-box">🌟</div>
-                        <div class="memory-meta">
-                            <span class="memory-tag">Bölüm 1</span>
-                            <span class="memory-date">Başlangıç</span>
-                        </div>
-                        <h3>İlk Tanıştığımız Gün</h3>
-                        <p>Zamanın nasıl geçtiğini anlamadığımız o ilk sohbet ve hayat boyu sürecek sağlam bir dostluğun ilk tohumları!</p>
-                        <div class="photo-placeholder">
-                            <span class="photo-icon">🖼️</span>
-                            <span>Fotoğraf eklemek için burayı düzenleyebilirsin</span>
-                        </div>
-                    </div>
-
-                    <!-- Hatıra Kartı 2 -->
-                    <div class="memory-card">
-                        <div class="memory-icon-box">☕</div>
-                        <div class="memory-meta">
-                            <span class="memory-tag">Bölüm 2</span>
-                            <span class="memory-date">Unutulmaz Akşamlar</span>
-                        </div>
-                        <h3>Saatlerce Süren Muhabbetler</h3>
-                        <p>Kahveler eşliğinde dertleştiğimiz, dünyayı kurtardığımız ve kahkahalara boğulduğumuz o meşhur geceler.</p>
-                        <div class="photo-placeholder">
-                            <span class="photo-icon">📷</span>
-                            <span>Özel bir fotoğraf veya anı notu</span>
-                        </div>
-                    </div>
-
-                    <!-- Hatıra Kartı 3 -->
-                    <div class="memory-card">
-                        <div class="memory-icon-box">🚗</div>
-                        <div class="memory-meta">
-                            <span class="memory-tag">Bölüm 3</span>
-                            <span class="memory-date">Yol Hikayesi</span>
-                        </div>
-                        <h3>En Eğlenceli Yolculuk</h3>
-                        <p>Müzik sesini sonuna kadar açıp şarkılara eşlik ettiğimiz, kaybolsak bile eğlenmeyi bildiğimiz o yolculuk.</p>
-                        <div class="photo-placeholder">
-                            <span class="photo-icon">🗺️</span>
-                            <span>Birlikte çekildiğiniz bir fotoğraf</span>
-                        </div>
-                    </div>
-
-                    <!-- Hatıra Kartı 4 -->
-                    <div class="memory-card">
-                        <div class="memory-icon-box">🚀</div>
-                        <div class="memory-meta">
-                            <span class="memory-tag">Bölüm 4</span>
-                            <span class="memory-date">Gelecek</span>
-                        </div>
-                        <h3>Ve Önümüzde Bizi Bekleyen Yeni Sayfalar</h3>
-                        <p>Daha keşfedilecek çok yer, söylenecek çok şarkı ve kahkahalarla anılacak yepyeni yaşlar var!</p>
-                        <div class="photo-placeholder">
-                            <span class="photo-icon">✨</span>
-                            <span>Gelecek güzel anılar için yer ayrıldı</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. NEDEN HARİKASIN? (ÖZELLİKLER) -->
+        <!-- 3. NEDEN HARİKASIN? (ÖZELLİKLER) -->
         <section id="traits" class="traits-section">
             <div class="section-container">
                 <div class="section-header">
@@ -440,9 +366,37 @@ Yalnız o gülen gözlerinin nuru görünse yeter deyip önemli bir hususa deği
                 </div>
 
                 <div id="notesGrid" class="notes-grid">
-                    <!-- Notlar buraya dinamik olarak eklenecek -->
-                    <div id="emptyNotesMsg" class="empty-notes-hint">
-                        Henüz bir not eklenmedi. Yukarıdaki <strong>"+ Yeni Not Bırak"</strong> butonuna tıklayarak ilk notu ekleyebilirsin! 📌✨
+                    <div class="sticky-note note-pink">
+                        <p class="note-text">"Doğum günün kutlu olsun berra kusura bakma bugün kutlama yerine gelemedim ama söz seneye geleceğim nice mutlu yıllara"</p>
+                        <span class="note-author">— gaydam</span>
+                    </div>
+                    <div class="sticky-note note-lavender">
+                        <p class="note-text">"Baybuş Berraaa, Sevdiklerinle birlikte nice sağlıklı,mutlu,huzurlu yaşlar geçirmeni dilerim.İyi ki doğdun🤍 Kalbinden geçen gerçeğin olsun.❤️😘"</p>
+                        <span class="note-author">— Rahime adam</span>
+                    </div>
+                    <div class="sticky-note note-yellow">
+                        <p class="note-text">"Berra anuevokusmusjd Ossurtmus dogum gunun kutlu olsun iyi ki varsin galiba fav bayburtlu sensin 😉😉😉😉"</p>
+                        <span class="note-author">— abicik</span>
+                    </div>
+                    <div class="sticky-note note-blue">
+                        <p class="note-text">"Okunmuş Bayburtum iyi ki doğdun. Seni sevmekte olup tüm iyi dileklerimi sana iletiyorum. ❤️❤️❤️ Musmutlu ol herkesin adaşı olan tadam 🥳🥳🥳🥳"</p>
+                        <span class="note-author">— Ilgın ve Cemre</span>
+                    </div>
+                    <div class="sticky-note note-green">
+                        <p class="note-text">"BAYBUUUUUSSS İYİ Kİ VARSİN İYİ Kİ DOGMUSSUN NİCE MUTLU SEVGİ DOLU SAGLİKLİ YİLLARA HELELELELELELEKELELELELLE💋💋💋"</p>
+                        <span class="note-author">— melik celik kobalt</span>
+                    </div>
+                    <div class="sticky-note note-pink">
+                        <p class="note-text">"bayburt baybuş baykuş karga berraaam iyi ki doğdun seni çok seviyorum tossur tossur musmutlu bir yaşın olsun❤️❤️❤️"</p>
+                        <span class="note-author">— ZEHROOŞ</span>
+                    </div>
+                    <div class="sticky-note note-lavender">
+                        <p class="note-text">"Adaşım iyi ki doğdun iyi ki varsın nice mutlu burnumuzun uzun olduğu güzel senelere en sevdiğim adaşımm 🩷"</p>
+                        <span class="note-author">— Adaş</span>
+                    </div>
+                    <div class="sticky-note note-yellow">
+                        <p class="note-text">"BERROS NUR OKUMUSCUM BENIM OH OH DUNYANIN EN MUKEMMEL INSANI DOGMUS IYIKI DOGMUSSUN"</p>
+                        <span class="note-author">— BEYZOS</span>
                     </div>
                 </div>
             </div>
@@ -519,6 +473,6 @@ Yalnız o gülen gözlerinin nuru görünse yeter deyip önemli bir hususa deği
 
     <!-- Konfeti Efekti ve Mantık Scripti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=3.0"></script>
 </body>
 </html>

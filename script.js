@@ -476,22 +476,19 @@ function changeDirection(dir) {
 
 // Klavye Kontrolleri (WASD & Ok Tuşları)
 window.addEventListener('keydown', (e) => {
-    // 1. Kullanıcı yazı yazıyorsa (input, textarea vb.) klavye kontrollerini tamamen yoksay
+    // 1. Oyun aktif değilse hiçbir şey yapma (oyun klavye tuşlarıyla ASLA başlatılamaz)
+    if (!isPlaying) {
+        return;
+    }
+
+    // 2. Kullanıcı yazı yazıyorsa (input, textarea vb.) veya not modalı açıksa oyuna müdahale etme
     const activeEl = document.activeElement;
     const target = e.target;
     if (
         (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) ||
-        (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.isContentEditable))
+        (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.isContentEditable)) ||
+        (noteModal && noteModal.classList.contains('active'))
     ) {
-        return;
-    }
-
-    // 2. Not ekleme penceresi açıksa veya oyun aktif değilse yılan hareketlerini tetikleme
-    if (noteModal && noteModal.classList.contains('active')) {
-        return;
-    }
-
-    if (!isPlaying) {
         return;
     }
 
@@ -605,7 +602,30 @@ function loadStoredNotes() {
     if (saved) {
         try {
             const notes = JSON.parse(saved);
-            notes.forEach(n => appendNoteCard(n.message, n.author, n.color));
+            // 'Melik' olarak kalmis notlar varsa yazar adini guncelle
+            let updated = false;
+            notes.forEach(n => {
+                if (n.author === 'Melik') {
+                    n.author = 'melik celik kobalt';
+                    updated = true;
+                }
+            });
+            if (updated) {
+                localStorage.setItem('beto_guestbook_notes', JSON.stringify(notes));
+            }
+
+            // HTML icinde zaten var olan notlarin mesajlarini topla (cift yuklenmeyi engeller)
+            const existingTexts = Array.from(notesGrid.querySelectorAll('.note-text')).map(el =>
+                el.textContent.trim().replace(/^["“]|["”]$/g, '').trim()
+            );
+
+            // Sadece HTML'de bulunmayan sonradan eklenmis yeni notlari ekle
+            notes.forEach(n => {
+                const cleanMsg = (n.message || '').trim();
+                if (!existingTexts.includes(cleanMsg)) {
+                    appendNoteCard(n.message, n.author, n.color);
+                }
+            });
         } catch (e) {
             console.error(e);
         }
